@@ -11,18 +11,25 @@ STOP=260
 STEP=10
 RUNS=1
 DURATION=30
-#KERNEL=k6.14
 NIC=intel
 NODE=bare-metal
-DIR=/proj/superfluidity-PG0/pastrami/netrace_data/test-0
 SRV=clab
 TESTBED=tb0
 DATE=$(date -Iminutes)
 VER=01
 
-IP_REMOTE="128.105.145.226"
+IP_REMOTE="128.105.145.186"
 
-mkdir -p "${DIR}"
+BASE_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")"/.. ; pwd -P)
+DATA_DIR=${BASE_DIR}/netrace_data/test-1
+
+SUT_DIR=/users/lplung/pastrami
+SUT_DATA_DIR=${BASE_DIR}/netrace_data/test-1
+
+PCAP_FILE=${BASE_DIR}/scripts/pcap/plain-ipv6-64.pcap
+SSH_KEY=/root/.ssh/id_rsa
+
+mkdir -p "${DATA_DIR}"
 
 #declare -a KERNEL=("k5.10" "k5.12" "k5.15" "k5.19" "k6.2" "k6.5" "k6.8" "k6.10" "k6.12" "k6.13" "k6.14")
 #declare -a KERNEL=("k5.10" "k5.12" "k5.15" "k5.19")
@@ -46,7 +53,7 @@ experiment () {
 
     for i in $(seq 1 $exp_num); do
         echo "Test $i"
-        trex_cmd=$(python3 /proj/superfluidity-PG0/pastrami/scripts/TrexDriverCLI4.py -s 127.0.0.1 -r ${IP_REMOTE} -c 4 -o 22 -u root --txPort 0 --rxPort 1 --rate $rate --duration $duration --pkey /root/.ssh/id_rsa --pcap /proj/superfluidity-PG0/srperf2/pcap/trex-pcap-files/plain-ipv6-64.pcap)
+        trex_cmd=$(python3 "${BASE_DIR}"/scripts/TrexDriverCLI4.py -s 127.0.0.1 -r ${IP_REMOTE} -c 4 -o 22 -u root --txPort 0 --rxPort 1 --rate $rate --duration $duration --pkey ${SSH_KEY} --basedir ${SUT_DIR} --datadir ${SUT_DATA_DIR} --pcap ${PCAP_FILE})
         test_cmd=$(echo $trex_cmd | xargs)
 
         #echo -e "#######\n$test_cmd\n#####"
@@ -142,7 +149,7 @@ do
 
    echo "Switching kernel to version ${KRL:1}"
    KRL_FILE=$(ssh root@${IP_REMOTE} "ls /boot/vmlinuz* | grep -F ${KRL:1}")
-   ssh root@${IP_REMOTE} "/proj/superfluidity-PG0/pastrami/scripts/boot-kernel.sh ${KRL_FILE}"
+   ssh root@${IP_REMOTE} "${SUT_DIR}/scripts/boot-kernel.sh ${KRL_FILE}"
    sleep 5
 
    echo "Reboot SUT"
@@ -152,7 +159,7 @@ do
    sleep 300
 
    echo "Inizialiting SUT node"
-   ssh root@${IP_REMOTE} "/proj/superfluidity-PG0/pastrami/scripts/sut_init.sh"
+   ssh root@${IP_REMOTE} "${SUT_DIR}/scripts/sut_init.sh"
    sleep 5
 
    echo "Show the kernel version"
@@ -162,12 +169,8 @@ do
    sleep 30
 
    echo "Starting experiment: ${EXPCOONFIG}"
-   experiment_run ${NAME} ${START} ${STOP} ${STEP} ${RUNS} ${DURATION} ${DIR}/${SRV}_${TESTBED}_raw_${EXPCONFIG}_nic_buf_4096_irq_pf0-4_pf1-4_date_${DATE}_ver_${VER}.txt
+   experiment_run ${NAME} ${START} ${STOP} ${STEP} ${RUNS} ${DURATION} ${DATA_DIR}/${SRV}_${TESTBED}_raw_${EXPCONFIG}_nic_buf_4096_irq_pf0-4_pf1-4_date_${DATE}_ver_${VER}.txt
 done
 
 sleep 2
 echo "End of experiments."
-
-
-
-

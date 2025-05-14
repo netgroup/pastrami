@@ -45,17 +45,23 @@ def main():
     # Get the experiment code from commandline
     exp_id = sys.argv[3]
 
-    # Get the nettrace path from commandline
+    # Get the path of generated file from commandline
     file_path = sys.argv[4]
 
+    # Compute the right path of the netrace program and file
+    file_name=f"{file_path}/cpu_load_exp_id_{exp_id}.txt"
+
+    # Get the current path of this script
+    base_path=os.path.abspath(os.path.dirname(__file__))
+
     # Call the script that execute the eBPF netrace command: ex. ./netrace | tee cpu_load_exp_id_AAAAA.txt
-    subprocess.run(['/proj/superfluidity-PG0/pastrami/scripts/start_netrace.sh', str(duration), exp_id], check=True, capture_output=True)
+    subprocess.run([base_path + '/start_netrace.sh', str(duration), file_name], check=True, capture_output=True)
 
     # Wait 2 seconds before process data
     time.sleep(2)
 
     # Process the cpu load data
-    cpu_loads = parse_cpu_usage(file_path, cpu_id)
+    cpu_loads = parse_cpu_usage(file_name, cpu_id)
 
     min_range = int(2)
     max_range = int(duration - 1)

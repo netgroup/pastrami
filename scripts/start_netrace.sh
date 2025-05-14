@@ -1,9 +1,11 @@
 #!/bin/bash
 
 DURATION=$1
-EXP_ID=$2
+FILE_PATH=$2
 
-/root/netrace | tee cpu_load_exp_id_${EXP_ID}.txt &
+BASE_PATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P)
+
+"${BASE_PATH}/netrace" | tee "${FILE_PATH}" &
 LAST_PID=$!
 NETRACE_PID=$((LAST_PID - 1))
 echo "%%% PID: ${LAST_PID} --- ${NETRACE_PID} %%%"

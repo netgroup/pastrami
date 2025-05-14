@@ -10,7 +10,7 @@ import random, string
 from TrexDriver import *
 
 class CPULoad (Thread):
-    def __init__(self, remote, port, user, pkey_path, cpu_id, duration):
+    def __init__(self, remote, port, user, pkey_path, cpu_id, duration, base_dir, data_dir):
         Thread.__init__(self)
         self.remote = remote
         self.port = port
@@ -18,6 +18,8 @@ class CPULoad (Thread):
         self.pkey_path = pkey_path
         self.cpu_id = cpu_id
         self.duration=duration
+        self.base_dir=base_dir
+        self.data_dir=data_dir
 
     def gen_rnd_id(self):
         # Define the characters to choose from: letters and digits
@@ -44,8 +46,8 @@ class CPULoad (Thread):
         # Connect to the server using the private key
         try:
             ssh.connect(self.remote, username=self.user, pkey=private_key)
-            # Execute a command (optional)
-            stdin, stdout, stderr = ssh.exec_command(f"python3 /proj/superfluidity-PG0/pastrami/scripts/cpu_load_netrace.py {self.cpu_id} {self.duration} {self.rnd_id} cpu_load_exp_id_{self.rnd_id}.txt")
+            # Execute a command
+            stdin, stdout, stderr = ssh.exec_command(f"python3 {self.base_dir}/scripts/cpu_load_netrace.py {self.cpu_id} {self.duration} {self.rnd_id} {self.data_dir}")
             #stdin, stdout, stderr = ssh.exec_command(f"ls")
             self.output = stdout.read().decode()
             print ("SSH output: ", self.output)
@@ -103,6 +105,8 @@ def main(argv=None):  # IGNORE:C0111
         parser.add_argument("-o", "--ssh_port", dest="ssh_port", required=True)
         parser.add_argument("-u", "--user", dest="user", required=True)
         parser.add_argument("-k", "--pkey", dest="pkey_path", required=True)
+        parser.add_argument("-b", "--basedir", dest="base_dir", required=True)
+        parser.add_argument("-n", "--datadir", dest="data_dir", required=True)
 
         # Process arguments
         args = parser.parse_args()
@@ -122,8 +126,10 @@ def main(argv=None):  # IGNORE:C0111
         port = int(args.ssh_port)
         user = str(args.user)
         pkey_path = str(args.pkey_path)
+        base_dir = str(args.base_dir)
+        data_dir = str(args.data_dir)
 
-        thread2 = CPULoad(remote, port, user, pkey_path, cpu_id, duration)
+        thread2 = CPULoad(remote, port, user, pkey_path, cpu_id, duration, base_dir, data_dir)
         thread2.start()
 
         thread1 = TrexRun(server, txPort, rxPort, pcap, rate, duration)
