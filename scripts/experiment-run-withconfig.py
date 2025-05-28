@@ -1,11 +1,11 @@
 
 import os
 import subprocess
+import json
 from config import *
 
 def run_experiment(exp_name, json_name, exp_num, duration, rate):
     print(f"Starting experiment {exp_name} at rate {rate} pkt/s for {exp_num} times")
-    exp_json = [[rate, 4]]
 
     for i in range(1, exp_num + 1):
         print(f"Test {i}")
@@ -24,32 +24,47 @@ def run_experiment(exp_name, json_name, exp_num, duration, rate):
             "--pcap", PCAP_PATH
         ]
 
-        result = subprocess.check_output(cmd, text=True)
-        print(result)
+        try:
+            result = subprocess.check_output(cmd, text=True)
+            print(result)
 
-        pid = extract_value(result, "random_id:")
-        duration_sec = extract_value(result, "duration_sec:")
-        mean_cpu_load = extract_value(result, "mean_cpu_load:")
-        std_dev_cpu_load = extract_value(result, "std_dev_cpu_load:")
+            pid = extract_value(result, "random_id:")
+            duration_sec = extract_value(result, "duration_sec:")
+            mean_cpu_load = extract_value(result, "mean_cpu_load:")
+            std_dev_cpu_load = extract_value(result, "std_dev_cpu_load:")
 
-        exp_data = {
-            "PID": pid,
-            "duration_sec": float(duration_sec),
-            "mean_cpu_load": float(mean_cpu_load),
-            "std_dev_cpu_load": float(std_dev_cpu_load)
-        }
-        exp_json.append(exp_data)
+            exp_record = [
+                [rate, 4],
+                {
+                    "PID": pid,
+                    "duration_sec": float(duration_sec),
+                    "mean_cpu_load": float(mean_cpu_load),
+                    "std_dev_cpu_load": float(std_dev_cpu_load)
+                }
+            ]
 
-    with open(json_name, "a") as f:
-        f.write(f"{exp_json}\n")
+        except Exception as e:
+            print(f"Failed to collect experiment result: {e}")
+            exp_record = [
+                [rate, 4],
+                {
+                    "PID": "0.0",
+                    "duration_sec": 0.0,
+                    "mean_cpu_load": 0.0,
+                    "std_dev_cpu_load": 0.0
+                }
+            ]
+
+        with open(json_name, "a") as f:
+            f.write(json.dumps(exp_record) + "\n")
 
 def extract_value(output, key):
     for line in output.splitlines():
         if key in line:
             parts = line.split()
-            idx = parts.index(key.rstrip(':')) if key.rstrip(':') in parts else -1
-            if idx != -1 and idx + 1 < len(parts):
-                return parts[idx + 1].strip(",")
+            for i, p in enumerate(parts):
+                if key.strip(":") in p and i + 1 < len(parts):
+                    return parts[i + 1].strip(",")
     return "0.0"
 
 def run_all():
@@ -61,9 +76,9 @@ def run_all():
         krl_file = subprocess.check_output(
             ["ssh", f"root@{IP_REMOTE}", f"ls /boot/vmlinuz* | grep -F {krl[1:]}"], text=True).strip()
         subprocess.run(["ssh", f"root@{IP_REMOTE}", f"{SCRIPTS_DIR}/boot-kernel.sh {krl_file}"])
-        #subprocess.run(["ssh", f"root@{IP_REMOTE}", "reboot"])
-        #print("Waiting 5 minutes for reboot...")
-        #subprocess.run(["sleep", "300"])
+        subprocess.run(["ssh", f"root@{IP_REMOTE}", "reboot"])
+        print("Waiting 5 minutes for reboot...")
+        subprocess.run(["sleep", "300"])
         subprocess.run(["ssh", f"root@{IP_REMOTE}", f"{SCRIPTS_DIR}/sut_init.sh"])
         subprocess.run(["ssh", f"root@{IP_REMOTE}", "uname -a"])
         print("Waiting 30 seconds before starting...")
