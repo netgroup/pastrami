@@ -13,6 +13,7 @@ The Pastrami in this repository has been made with the above architect, as you c
 You can use this repository to measure the performance of CPU and Latency. 
 How to run?
 For installing the requirements and preparing the environment, you should take some steps.
+
 1-	Make a clone in both of the nodes with the branch of Rasool.
 ```bash
 git clone -b rasool https://github.com/netgroup/pastrami.git
@@ -30,6 +31,7 @@ Test with:
 ssh root@IP-OF-SUT
  ```
 , you should log in without password requirement.
+
 3-	Run the file  setup_tg.sh, it automatically installs all the requirements and does the configuration.
 ```bash
  sudo ./setup_tg.sh
