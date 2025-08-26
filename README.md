@@ -16,6 +16,7 @@ For installing the requirements and preparing the environment, you should take s
 1-	Make a clone in both of the nodes with the branch of Rasool.
 ```bash
 git clone -b rasool https://github.com/netgroup/pastrami.git
+
 2-	Make the ssh key and copy it to the Sut as an authorized node.
 ssh-keygen
 ssh-copy-id -i or you can make it manually.
