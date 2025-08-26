@@ -39,6 +39,7 @@ ssh root@IP-OF-SUT
 sudo ./trex_run_fin.sh
 ```
 5-	We prepare a configuration yml file that you can change the test configuration as you need. You need to set at least the IP address of the SUT node in (IP_REMOTE). By default, we set CPU number 4 for the test.  Set it as you wish, depending on your servers. And you can choose the kernel that you want to test. The other setting is clear.
+
 6-	Now everything is ready to make the test. You can run the file experiment-run-yaml.py and get the test of CPU performance.
 ```bash
  sudo python3 experiment-run-yaml.py
