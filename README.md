@@ -44,9 +44,9 @@ sudo ./trex_run_fin.sh
  sudo python3 experiment-run-yaml.py
 ```
 7-	As the test is completed, you can see the results in the file named (netrace_data).
-8-	For take the latency test you should go to the directory named latency and, depending on the need, run each Python file with the command:
+8-	For take the latency test you should go to the directory named latency and open the file named run-latency,py and write the name of the file you need to test in the scripts part, depending on the need, run each Python file with the command:
 ```bash
-sudo python3 FILE-NAME
+sudo python3 run-latency.py
 ```
 9-	The results will save on a SCV file.
 
