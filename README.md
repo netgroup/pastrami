@@ -26,18 +26,22 @@ ssh-copy-id -i
 ``` 
 or you can make it manually.
 Test with:
- ```bash ssh root@IP-OF-SUT
+ ```bash
+ssh root@IP-OF-SUT
  ```
 , you should log in without password requirement.
 3-	Run the file  setup_tg.sh, it automatically installs all the requirements and does the configuration.
-```bash ./setup_tg.sh
+```bash
+ sudo ./setup_tg.sh
 ```
 4-	 After installation has successfully passed, run the trex_run_fin.sh
-```bash ./trex_run_fin.sh
+```bash
+sudo ./trex_run_fin.sh
 ```
 5-	We prepare a configuration yml file that you can change the test configuration as you need. You need to set at least the IP address of the SUT node in (IP_REMOTE). By default, we set CPU number 4 for the test.  Set it as you wish, depending on your servers. And you can choose the kernel that you want to test. The other setting is clear.
 6-	Now everything is ready to make the test. You can run the file experiment-run-yaml.py and get the test of CPU performance.
-```bash sudo python3 experiment-run-yaml.py
+```bash
+ sudo python3 experiment-run-yaml.py
 ```
 7-	As the test is completed, you can see the results in the file named (netrace_data).
 8-	For take the latency test you should go to the directory named latency and, depending on the need, run each Python file with the command (sudo python3 FILE-NAME)
