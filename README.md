@@ -14,7 +14,7 @@ You can use this repository to measure the performance of CPU and Latency.
 How to run?
 For installing the requirements and preparing the environment, you should take some steps.
 1-	Make a clone in both of the nodes with the branch of Rasool.
-<pre> bash git clone -b rasool https://github.com/netgroup/pastrami.git  </pre>
+<pre>```bash git clone -b rasool https://github.com/netgroup/pastrami.git```</pre>
 
 2-	Make the ssh key and copy it to the Sut as an authorized node.
 <pre> ```bash 
