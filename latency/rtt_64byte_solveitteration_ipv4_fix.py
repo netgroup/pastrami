@@ -3,8 +3,8 @@
 
 import sys, csv, time, os  # stdlib imports
 # Add TRex interactive API and Scapy shipped with TRex to sys.path
-sys.path.insert(0, "/opt/trex/v3.06/automation/trex_control_plane/interactive")  # TRex STL API path
-sys.path.insert(0, "/opt/trex/v3.06/external_libs/scapy-2.4.3")                  # Scapy path (offline)
+sys.path.insert(0, "/opt/v3.06/automation/trex_control_plane/interactive")  # TRex STL API path
+sys.path.insert(0, "/opt/v3.06/external_libs/scapy-2.4.3")                  # Scapy path (offline)
 
 from trex_stl_lib.api import *                   # TRex STL objects
 from scapy.all import Ether, IP, UDP, Raw        # Scapy protocol layers
