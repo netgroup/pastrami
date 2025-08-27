@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TREX_DIR="/opt/trex/v3.06"
+TREX_DIR="/opt/v3.06"
 TEST_SCRIPT="rtt_64byte_solveitteration_ipv6.py"
 # اجرای TRex اگر ران نیست
 pgrep t-rex-64 > /dev/null || {
