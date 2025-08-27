@@ -12,8 +12,8 @@ from scapy.all import Ether, IP, UDP, Raw        # Scapy protocol layers
 # --------------------
 # Test parameters
 # --------------------
-SRC_MAC = "90:e2:ba:87:6a:84"  # L2 source MAC address
-DST_MAC = "90:e2:ba:87:6a:85"  # L2 destination MAC address
+SRC_MAC = "00:00:00:00:11:11"  # L2 source MAC address
+DST_MAC = "00:00:00:00:22:22"  # L2 destination MAC address
 
 TX_PORT = 0    # TRex TX port index
 RX_PORT = 1    # TRex RX port index
