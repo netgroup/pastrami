@@ -12,8 +12,8 @@ from scapy.all import Ether, IPv6, UDP, Raw      # IPv6 stack
 # --------------------
 # Test parameters
 # --------------------
-SRC_MAC = "90:e2:ba:87:6a:84"    # L2 source MAC address
-DST_MAC = "90:e2:ba:87:6a:85"    # L2 destination MAC address
+SRC_MAC = "00:00:00:00:11:11"  # L2 source MAC address
+DST_MAC = "00:00:00:00:22:22"  # L2 destination MAC address
 
 SRC_IP6 = "2001:db8:10::1"       # IPv6 source (port0 / enp6s0f0)
 DST_IP6 = "2001:db8:20::1"       # IPv6 destination (port1 / enp6s0f1)
