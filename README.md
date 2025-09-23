@@ -24,6 +24,8 @@ For installing the requirements and preparing the environment, you should take s
 
 ***All the requierment will be automatically install with runing the setup file on the nodes but for better understanding we list it here***
 ```bash
+sudo apt install -y python3 python3-pip python3-venv
+
 apt install -y python3-pip sysstat
 
 pip3 install pyaml numpy paramiko
