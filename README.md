@@ -14,23 +14,40 @@ You can use this repository to measure the performance of CPU and Latency.
 How to run?
 For installing the requirements and preparing the environment, you should take some steps.
 
-1-	Make a clone in both of the nodes with the branch of Rasool.
+1-	Make a clone in both of the nodes with the branch of Rasool, in both SUT and TG server.
 ```bash
 git clone -b rasool https://github.com/netgroup/pastrami.git
 ```
 
 
-2-	Make the ssh key and copy it to the Sut as an authorized node.
+2-	Make the ssh key and copy it to the Sut as an authorized node. as we use Paramiko for ssh connections you should generate a key to be compatible with it:
 ```bash 
 sudo ssh-keygen -t rsa -b 4096 -m PEM -f /root/.ssh/id_rsa -N ""
+```
+if you have password for login you can use the copy command: 
+```bash
 sudo ssh-copy-id -i /root/.ssh/id_rsa.pub root@”SUT IP ”
 ``` 
-or you can make it manually.
-Test with:
- ```bash
-ssh root@IP-OF-SUT
+or if not, you should copy the public key in /root/.ssh/authorized_keys on SUT.
+on TG run: 
+```bash
+sudo cat /root/.ssh/id_rsa.pub
+```
+select all the key and make a copy.
+Go to the SUT and copy manually the key in authorized section :
+```bash
+sudo nano /root/.ssh/authorized_keys
  ```
-, you should log in without password requirement.
+paste it here at free space end of file and save it.
+To make the test to be sure that key is correctly work run the command:
+```bash
+sudo ssh -i /root/.ssh/id_rsa root@SUT IP 'echo OK && uname -a'
+```
+you should see the OK and  linux kernel version and the descriptions.
+For example:
+OK
+Linux sut.test-final.superfluidity-pg0.wisc.cloudlab.us 5.15.0-151-generic #161-Ubuntu SMP Tue Jul 22 14:25:40 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+
 
 3-	Run the file  setup_tg.sh, it automatically installs all the requirements and does the configuration.
 ```bash
