@@ -22,8 +22,8 @@ git clone -b rasool https://github.com/netgroup/pastrami.git
 
 2-	Make the ssh key and copy it to the Sut as an authorized node.
 ```bash 
-ssh-keygen
-ssh-copy-id -i
+sudo ssh-keygen -t rsa -b 4096 -m PEM -f /root/.ssh/id_rsa -N ""
+sudo ssh-copy-id -i /root/.ssh/id_rsa.pub root@”SUT IP ”
 ``` 
 or you can make it manually.
 Test with:
