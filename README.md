@@ -13,6 +13,12 @@ The Pastrami in this repository has been made with the above architect, as you c
 You can use this repository to measure the performance of CPU and Latency. 
 How to run?
 For installing the requirements and preparing the environment, you should take some steps.
+***All the requierment will be automatically install with runing the setup file on the nodes but for better understanding we list it here***
+```bash
+apt install -y python3-pip sysstat
+
+pip3 install pyaml numpy paramiko
+```
 
 1-	Make a clone in both of the nodes with the branch of Rasool, in both SUT and TG server.
 ```bash
@@ -49,11 +55,20 @@ OK
 Linux sut.test-final.superfluidity-pg0.wisc.cloudlab.us 5.15.0-151-generic #161-Ubuntu SMP Tue Jul 22 14:25:40 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
 
 
-3-	Run the file  setup_tg.sh, it automatically installs all the requirements and does the configuration.
+3-	Run the file  setup_tg.sh on TG and again do the same in SUT , it automatically installs all the requirements and does the configuration.
 ```bash
  sudo ./setup_tg.sh
 ```
-4-	 After installation has successfully passed, run the trex_run_fin.sh
+on SUT:
+```bash
+sudo ./setup_sut.sh
+```
+***if the bash file did not run pay attention that they should have execution permission.***
+the permission will give to the files by runing:
+```bash
+sudo chmod +x "file name"
+```
+4-	 After installation has successfully passed, run the trex_run_fin.sh on the TG node.
 ```bash
 sudo ./trex_run_fin.sh
 ```
@@ -64,6 +79,9 @@ sudo ./trex_run_fin.sh
  sudo python3 experiment-run-yaml.py
 ```
 7-	As the test is completed, you can see the results in the file named (netrace_data).
+during the tests you should see on the screen the results such as :
+<img width="503" height="374" alt="image" src="https://github.com/user-attachments/assets/8f1996be-69ed-49ed-8d2b-dd11663d6f42" />
+***The TX and RX should not be zero***
 
 8-	For take the latency test you should go to the directory named latency and open the file named run-latency,py and write the name of the file you need to test in the scripts part, depending on the need, run each Python file with the command:
 ```bash
