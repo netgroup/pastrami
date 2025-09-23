@@ -80,7 +80,7 @@ sudo ./trex_run_fin.sh
 ```
 7-	As the test is completed, you can see the results in the file named (netrace_data).
 during the tests you should see on the screen the results such as :
-<img width="503" height="374" alt="image" src="https://github.com/user-attachments/assets/8f1996be-69ed-49ed-8d2b-dd11663d6f42" />
+ ![output screen](images/outputscreen.png)
 ***The TX and RX should not be zero***
 
 8-	For take the latency test you should go to the directory named latency and open the file named run-latency,py and write the name of the file you need to test in the scripts part, depending on the need, run each Python file with the command:
