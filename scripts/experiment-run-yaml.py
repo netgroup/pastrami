@@ -63,7 +63,7 @@ def run_experiment(exp_name, json_name, exp_num, duration, rate):
             "python3", os.path.join(SCRIPTS_DIR, "TrexDriverCLI4-parralel-nonblock.py"),
             "-s", "127.0.0.1",
             "-r", IP_REMOTE,
-            "-c", CPU_NUM,
+            "-c", str(CPU_NUM),
             "-o", "22",
             "-u", "root",
             "--txPort", "0",
