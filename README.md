@@ -9,7 +9,15 @@ In addition to throughput consistency and packet loss, PASTRAMI also deals with 
 Architect:
  ![System Architecture](images/architect.png)
 
-The Pastrami in this repository has been made with the above architect, as you can see we have two nodes named TG as traffic generator and SUT as system under test.
+The Pastrami in this repository has been made with the above architect, as you can see we have two nodes named TG as traffic generator and SUT as system under test.  
+The testbed consisted of two nodes:  
+
+  1. Traffic Generator (TG): Equipped with TRex, responsible for injecting and receiving
+traffic. One NIC port transmits packets, the other receives them back after forwarding.
+
+  2. System Under Test (SUT): Forwards packets from ingress to egress port. Configured
+for various forwarding behaviors (IPv4, IPv6, L2, SRv6).
+
 You can use this repository to measure the performance of CPU and Latency. 
 How to run?
 For installing the requirements and preparing the environment, you should take some steps.  
