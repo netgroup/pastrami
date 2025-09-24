@@ -7,11 +7,11 @@ pip3 install pyaml numpy paramiko
 
 # Network Config
 # --------------------------
-# تعریف اینترفیس‌ها
+#define interface
 IFACE1="enp6s0f0"
 IFACE2="enp6s0f1"
 
-# IPv6 آدرس‌ها (تو میتونی تغییر بدی به چیزی که نیاز داری)
+# IPv6 address
 IPV6_ADDR1="2001:db8:10::1/64"
 IPV6_ADDR2="2001:db8:20::1/64"
 
