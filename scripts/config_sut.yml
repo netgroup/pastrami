@@ -1,0 +1,3 @@
+interfaces:
+  port1: enp0s6f0  #please write the first port name of sut here
+  port2: enp0s6f1  #please write the first port name of sut here
