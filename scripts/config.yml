@@ -29,3 +29,6 @@ KERNELS:
 #  - "k6.14"
 PCAP_PATH: "pcap/plain-ipv6-64.pcap"
 PRIVATE_KEY: "/root/.ssh/id_rsa"
+interfaces:
+  port1: enp0s6f0  #please insert the first port name here
+  port2: enp0s6f1  #please insert the second port name here
