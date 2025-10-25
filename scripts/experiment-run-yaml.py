@@ -25,7 +25,7 @@ VER = config['VER']
 IP_REMOTE = config['IP_REMOTE']
 KERNELS = config['KERNELS']
 PCAP_PATH = config['PCAP_PATH']
-PRIVATE_KEY = config['PRIVATE_KEY']
+#PRIVATE_KEY = config['PRIVATE_KEY']
 CPU_NUM = config['CPU_NUM']
 # Dynamic values
 DATE = datetime.datetime.now().isoformat(timespec='minutes')
@@ -35,6 +35,8 @@ DIR = os.path.join(BASE_DIR, "netrace_data", "test-0")
 os.makedirs(DIR, exist_ok=True)
 pcap_path = os.path.join(SCRIPTS_DIR, PCAP_PATH)
 
+PRIVATE_KEY = config.get('PRIVATE_KEY', '')
+PRIVATE_KEY = os.path.join(os.getcwd(), PRIVATE_KEY) if PRIVATE_KEY and not os.path.isabs(PRIVATE_KEY) else PRIVATE_KEY
 # Initialize Paramiko SSH client
 def create_ssh_client():
     client = paramiko.SSHClient()
