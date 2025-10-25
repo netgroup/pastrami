@@ -11,7 +11,7 @@ NODE: "bare-metal"
 SRV: "clab"
 TESTBED: "tb0"
 VER: "01"
-IP_REMOTE: "128.105.145.220"
+IP_REMOTE: "128.105.145.223"
 CPU_NUM: 4
 KERNELS:
   - "k5.15"
@@ -28,7 +28,7 @@ KERNELS:
 #  - "k6.13"
 #  - "k6.14"
 PCAP_PATH: "pcap/plain-ipv6-64.pcap"
-PRIVATE_KEY: "/root/.ssh/id_rsa"
+PRIVATE_KEY: "/users/Rmoradi/pastrami/scripts/sshkeys/tg_to_sut"
 interfaces:
   port1: enp0s6f0  #please insert the first port name here
   port2: enp0s6f1  #please insert the second port name here

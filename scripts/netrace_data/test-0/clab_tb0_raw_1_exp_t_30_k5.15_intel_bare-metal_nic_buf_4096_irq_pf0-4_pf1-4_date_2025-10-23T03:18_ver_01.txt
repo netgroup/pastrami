@@ -1,0 +1,2 @@
+[[250000, 4], {"PID": "JckQN", "duration_sec": 30.0, "mean_cpu_load": 32.98, "std_dev_cpu_load": 13.03}]
+[[260000, 4], {"PID": "om58w", "duration_sec": 30.0, "mean_cpu_load": 40.06, "std_dev_cpu_load": 1.76}]

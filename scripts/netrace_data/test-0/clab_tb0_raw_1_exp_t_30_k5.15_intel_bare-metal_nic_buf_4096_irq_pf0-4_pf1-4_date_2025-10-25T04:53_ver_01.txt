@@ -1,0 +1,2 @@
+[[250000, 4], {"PID": "sRhfp", "duration_sec": 30.0, "mean_cpu_load": 46.25, "std_dev_cpu_load": 7.91}]
+[[260000, 4], {"PID": "KbAXX", "duration_sec": 30.0, "mean_cpu_load": 47.52, "std_dev_cpu_load": 4.43}]
