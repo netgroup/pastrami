@@ -52,7 +52,7 @@ sudo nano config.yml
 
 Now that the primary setup is complete, you can proceed with running experiments:
 
-To run CPU experiments and performance tests, navigate to the pastrami/scripts directory:
+To run CPU experiments and performance tests, navigate to the pastrami/scripts directory and follow the step-by-step instructions provided in the README.md file inside that folder:
 ```bash 
 cd /scripts
 ```
