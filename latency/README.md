@@ -40,7 +40,7 @@ PCI_Address,MAC_Address,Driver
 0000:06:00.0,90:E2:BA:38:37:C8,net_ixgbe
 0000:06:00.1,90:E2:BA:38:37:C9,net_ixgbe
 ```
-4- If you have not run the **CPU performance experiment** before, please execute the following script to automatically install all required tools and configurations:
+4️⃣  If you have not run the **CPU performance experiment** before, please execute the following script to automatically install all required tools and configurations:
 ```bash
 sudo ./instalation.sh
 ```
