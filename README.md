@@ -44,7 +44,7 @@ Linux sut.test-final.superfluidity-pg0.wisc.cloudlab.us 5.15.0-151-generic #161-
 ```
 
 3. Navigate to the /scripts directory on the TG node and open the config.yml file using the command below.
-Then, set the IPv4 address of the SUT node inside the configuration file.
+Then, set the IPv4 address of the SUT node inside the configuration file. in the (IP_REMOTE:) part
 ```bash
 sudo nano config.yml
 ```
