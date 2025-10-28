@@ -52,11 +52,11 @@ sudo nano config.yml
 
 Now that the primary setup is complete, you can proceed with running experiments:
 
-To run CPU experiments and performance tests, navigate to the /scripts directory:
+To run CPU experiments and performance tests, navigate to the pastrami/scripts directory:
 ```bash 
 cd /scripts
 ```
-To run latency experiments, navigate to the /latency directory and follow the step-by-step instructions provided in the README.md file inside that folder
+To run latency experiments, navigate to the pastrami/latency directory and follow the step-by-step instructions provided in the README.md file inside that folder
 ```bash
 cd /latency
 ```
