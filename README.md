@@ -31,6 +31,18 @@ Copy the tg_to_sut.pub file and paste its contents into the /root/.ssh/authorize
 ```bash
 sudo ./create_key.sh
 ```
+✅ Verifying SSH Connection
+
+After copying the public key to the SUT, make sure the key and connection are working correctly by running the following command (replace SUT_IP with your SUT’s IP address):
+```bash
+sudo ssh -i /root/.ssh/id_rsa root@SUT IP 'echo OK && uname -a'
+```
+If everything is configured properly, you should see an output similar to this:
+```bash
+OK
+Linux sut.test-final.superfluidity-pg0.wisc.cloudlab.us 5.15.0-151-generic #161-Ubuntu SMP Tue Jul 22 14:25:40 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+```
+
 3. Navigate to the /scripts directory on the TG node and open the config.yml file using the command below.
 Then, set the IPv4 address of the SUT node inside the configuration file.
 ```bash
