@@ -33,7 +33,7 @@ sudo ./create_key.sh
 ```
 ✅ Verifying SSH Connection
 
-After copying the public key to the SUT, make sure the key and connection are working correctly by running the following command (replace SUT_IP with your SUT’s IP address):
+After copying the public key to the SUT, On TG node: make sure the key and connection are working correctly by running the following command (replace SUT_IP with your SUT’s IP address):
 ```bash
 sudo ssh -i /root/.ssh/id_rsa root@SUT IP 'echo OK && uname -a'
 ```
