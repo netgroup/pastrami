@@ -57,10 +57,33 @@ interfaces:
 
 Make sure that IP_REMOTE matches the SUT node’s IPv4 address.
 
-Update PRIVATE_KEY if you use a different SSH key path.
-
 The interfaces section should contain the exact NIC names of your TG node (you can verify them with ip link show).
 
 Only one kernel can be active at a time inside KERNELS.
 
 All other kernel versions should remain commented under KERNELS_DISABLED.
+
+
+***All the requierment will be automatically install with runing the automation.sh file on the TG node but for better understanding we list it here***
+```bash
+sudo apt install -y python3 python3-pip python3-venv
+
+apt install -y python3-pip sysstat
+
+pip3 install pyaml numpy paramiko
+```
+3️⃣ Run the Experiment and Install Requirements
+
+To automatically install all required dependencies and start the experiment,
+run the following command inside the /scripts directory:
+```bash 
+sudo ./automation.sh
+```
+This script will:
+
+Install all necessary dependencies and environment settings
+
+Configure the TG and SUT nodes
+
+Launch the experiment automatically.
+""The execution results will be printed on the terminal and automatically stored in the netrace_data directory as text files for later analysis""
