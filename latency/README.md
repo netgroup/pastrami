@@ -44,6 +44,15 @@ PCI_Address,MAC_Address,Driver
 ```bash
 sudo ./instalation.sh
 ```
+5️⃣ At the end, to run the **latency experiment**, please execute the following command:
+```bash
+sudo ./run_experiment.sh
+```
+After running the experiment script, you will see the results of each iteration printed on the screen.
+If all the steps were completed successfully, the TX and RX packet counters should both be non-zero.
 
-
+Once the test is finished, a CSV file containing the experiment results will be generated automatically — for example:
+```bash
+trex_iter_results_64B_ipv4_fix.csv
+```
 
