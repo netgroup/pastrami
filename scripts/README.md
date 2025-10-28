@@ -86,4 +86,5 @@ Install all necessary dependencies and environment settings
 Configure the TG and SUT nodes
 
 Launch the experiment automatically.
+
 ""The execution results will be printed on the terminal and automatically stored in the netrace_data directory as text files for later analysis""
