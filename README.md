@@ -25,7 +25,7 @@ How to run:
 ```bash
 git clone -b rasool https://github.com/netgroup/pastrami.git
 ```
-2. On TG node, Navigate to the /scripts directory and run the create_key.sh script using the command below.
+2. On TG node, Navigate to the pastrami/scripts directory and run the create_key.sh script using the command below.
 This will generate an SSH key pair inside the sshkeys directory.
 Copy the tg_to_sut.pub file and paste its contents into the /root/.ssh/authorized_keys file on the SUT node.
 ```bash
