@@ -62,6 +62,7 @@ The interfaces section should contain the exact NIC names of your TG node (you c
 Only one kernel can be active at a time inside KERNELS.
 
 All other kernel versions should remain commented under KERNELS_DISABLED.
+
 3️⃣ On the SUT node, open the config_sut.yml file and specify the interface names as shown in the example below. Follow the help comments to correctly assign each port. you can see the interfaces name by using (ip address) command.
 ```bash
 interfaces:
