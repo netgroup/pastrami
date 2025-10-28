@@ -1,5 +1,21 @@
-To run the experiment for CPU performance, the first step is to select the configuration that you want inside the config.yml file inside the TG node.
-open the config.yml file and fallow the steps.
+🧠 CPU Performance Experiment (TG Node)
+
+To run the CPU performance experiment, follow the steps below:
+
+1️⃣ Edit the Configuration File
+
+On the TG node, open the configuration file located at:
+```bash
+/scripts/config.yml
+```
+This file defines all parameters used for the experiment.
+Open it with your preferred editor (for example, nano):
+```bash
+sudo nano /users/<username>/pastrami/scripts/config.yml
+```
+Then, adjust the parameters as needed.
+Below is an example configuration:
+```bash
 NAME: "clab_cpu"
 START: 250
 STOP: 260
@@ -13,6 +29,7 @@ TESTBED: "tb0"
 VER: "01"
 IP_REMOTE: "128.105.145.252"
 CPU_NUM: 4
+
 KERNELS:
   - "k5.15"
 #KERNELS_DISABLED:
@@ -27,8 +44,12 @@ KERNELS:
 #  - "k6.12"
 #  - "k6.13"
 #  - "k6.14"
+
 PCAP_PATH: "pcap/plain-ipv6-64.pcap"
 PRIVATE_KEY: "sshkeys/tg_to_sut"
+
 interfaces:
-  port1: enn1  #please insert the first port name here
-  port2: enp0s6f1  #please insert the second port name here
+  port1: "enp1s0f0"   # please insert the first interface name here
+  port2: "enp1s0f1"   # please insert the second interface name here
+
+```
