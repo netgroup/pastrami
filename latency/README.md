@@ -1,5 +1,9 @@
 Latency Experiment
-*** please note that if you did not run the CPU experiment 
+
+> ⚠️ **Note:**  
+> If you haven’t run the **CPU experiment** before, please go to the `/scripts` directory and complete **steps 1 to 3** in its `README.md` file first.  
+> Once those steps are done, you can proceed with the steps below for the latency experiment.
+
 To run the latency performance experiment, please follow the steps below:
 
 1️⃣ Open the latency configuration file with your preferred text editor (e.g., nano):
