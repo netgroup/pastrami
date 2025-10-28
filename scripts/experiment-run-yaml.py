@@ -146,11 +146,11 @@ def run_all():
         run_remote_cmd(ssh_client, f"{SCRIPTS_DIR}/boot-kernel.sh {krl_file}")
 
         print("Rebooting server...")
-        #run_remote_cmd(ssh_client, "reboot")
-        #ssh_client.close()
+        run_remote_cmd(ssh_client, "reboot")
+        ssh_client.close()
 
         print("Waiting 5 minutes for server to reboot...")
-        #time.sleep(300)  # waite 5 minuts to resume
+        time.sleep(300)  # waite 5 minuts to resume
         print("Reconnecting to server...")
         ssh_client = create_ssh_client()  # reconnect to client after reboot
 
