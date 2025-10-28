@@ -18,7 +18,8 @@ traffic. One NIC port transmits packets, the other receives them back after forw
   2. System Under Test (SUT): Forwards packets from ingress to egress port. Configured
 for various forwarding behaviors (IPv4, IPv6, L2, SRv6).
 
-
+_________________________________________________________________________________________________________________________________________________________________
+How to run:
 
 1-	Make a clone in both of the nodes with the branch of Rasool, in both SUT and TG server.
 ```bash
