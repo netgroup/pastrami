@@ -53,3 +53,14 @@ interfaces:
   port2: "enp1s0f1"   # please insert the second interface name here
 
 ```
+2️⃣ Notes
+
+Make sure that IP_REMOTE matches the SUT node’s IPv4 address.
+
+Update PRIVATE_KEY if you use a different SSH key path.
+
+The interfaces section should contain the exact NIC names of your TG node (you can verify them with ip link show).
+
+Only one kernel can be active at a time inside KERNELS.
+
+All other kernel versions should remain commented under KERNELS_DISABLED.
