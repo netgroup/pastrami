@@ -67,7 +67,7 @@ All other kernel versions should remain commented under KERNELS_DISABLED.
 ```bash
 interfaces:
   port1: enp0s6f0  #please write the first port name of sut here
-  port2: enp0s6f1  #please write the first port name of sut here
+  port2: enp0s6f1  #please write the second port name of sut here
 ```
 
 ***All the requierment will be automatically install with runing the automation.sh file on the TG node but for better understanding we list it here***
