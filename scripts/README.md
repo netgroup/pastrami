@@ -62,7 +62,12 @@ The interfaces section should contain the exact NIC names of your TG node (you c
 Only one kernel can be active at a time inside KERNELS.
 
 All other kernel versions should remain commented under KERNELS_DISABLED.
-
+3️⃣ On the SUT node, open the config_sut.yml file and specify the interface names as shown in the example below. Follow the help comments to correctly assign each port. you can see the interfaces name by using (ip address) command.
+```bash
+interfaces:
+  port1: enp0s6f0  #please write the first port name of sut here
+  port2: enp0s6f1  #please write the first port name of sut here
+```
 
 ***All the requierment will be automatically install with runing the automation.sh file on the TG node but for better understanding we list it here***
 ```bash
@@ -72,7 +77,7 @@ apt install -y python3-pip sysstat
 
 pip3 install pyaml numpy paramiko
 ```
-3️⃣ Run the Experiment and Install Requirements
+4️⃣ Run the Experiment and Install Requirements
 
 To automatically install all required dependencies and start the experiment,
 run the following command inside the /scripts directory:
