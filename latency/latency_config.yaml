@@ -1,0 +1,8 @@
+tests:
+  IPV4_64B: "IPV4_64B.py"
+  IPV4_1500B: "IPV4_1500B.py"
+  IPV6_64B: "IPV6_64B.py"
+  MAConly_64B: "MAConly_64B.py"
+  MAConly_1500B: "MAConly_1500B.py"
+
+selected_test: "MAConly_64B"
